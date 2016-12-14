@@ -1,3 +1,6 @@
+var Frame = require('./Frame.js');
+var Roll = require('./Roll.js');
+
 var Game;
 
 Game = (function() {
@@ -32,3 +35,5 @@ Game = (function() {
   return Game;
 
 })();
+
+module.exports = Game;

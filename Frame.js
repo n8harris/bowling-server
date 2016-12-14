@@ -29,3 +29,5 @@ Frame = (function() {
   return Frame;
 
 })();
+
+module.exports = Frame;

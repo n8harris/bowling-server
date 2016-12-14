@@ -8,3 +8,5 @@ Roll = (function() {
   return Roll;
 
 })();
+
+module.exports = Roll;
