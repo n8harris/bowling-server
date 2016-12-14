@@ -7,9 +7,14 @@ var Game = require('./Game.js');
 exports.handler = function(event, ctx) {
   console.log('Reading data from event\n', util.inspect(event, {depth: 5}));
 
-  convertedResult = Converter.Convert(event);
-  var game = new Game(convertedResult);
-  var finalScore = game.score();
+  try {
+    convertedResult = Converter.Convert(event);
+    var game = new Game(convertedResult);
+    var finalScore = game.score();
+  }
+  catch(err){
+    ctx.fail(err);
+  }
 
   ctx.succeed(finalScore);
 };
