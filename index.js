@@ -5,8 +5,9 @@ var util = require('util');
 var Converter = require('./converter.js');
 var Game = require('./Game.js');
 var FirebaseService = require('./firebaseService.js');
-
+var cors = require('cors');
 var app = express();
+app.use(cors());
 app.use(parser.json());
 
 var firebaseService = new FirebaseService();
