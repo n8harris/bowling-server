@@ -1,14 +1,18 @@
 {
   "dependencies": {
-        "chai": "^3.5.0",
-        "karma": "0.13.22",
-        "karma-chrome-launcher": "1.0.1",
-        "karma-coffee-preprocessor": "^1.0.1",
-        "karma-jasmine": "1.0.2",
-        "mocha": "^3.2.0",
-        "phantomjs-prebuilt": "^2.0.0"
-    },
-    "scripts": {
-        "test": "mocha"
-    }
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "firebase": "^3.6.4",
+    "karma": "0.13.22",
+    "karma-chrome-launcher": "1.0.1",
+    "karma-coffee-preprocessor": "^1.0.1",
+    "karma-jasmine": "1.0.2",
+    "mocha": "^3.2.0",
+    "phantomjs-prebuilt": "^2.0.0",
+    "q": "^1.4.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }
