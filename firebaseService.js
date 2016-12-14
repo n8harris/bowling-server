@@ -15,37 +15,29 @@ FirebaseService = (function() {
         firebase.initializeApp(config);
     }
 
+    FirebaseService.prototype.GetScores = function() {
+        var defered = q.defer();
+
+        firebase.database().ref('gameScores/').once('value').then( function(scores) {
+            console.log(scores.exportVal());
+          defered.resolve(scores.exportVal());
+        });
+
+        return defered.promise;
+    }
+
     FirebaseService.prototype.SaveScores = function(scoreData) {
         var defered = q.defer();
-console.log("In SaveScores!");
 
-/*
-console.log(firebase.database());
-       firebase.database().ref('gameScores/').once('value').then( function(scores) {
-           console.log(scores);
-         defered.resolve(scores.exportVal());
-       });
-*/
-firebase.database.enableLogging(true);
-       var scoreRef = firebase.database().ref('gameScores');
-       scoreRef.on('value', function(snapshot) {
-           console.log(snapshot);
-         //updateStarCount(postElement, snapshot.val());
-       });
-
-
-        /*
-        firebase.database().ref('gameScores/1')
-            .set(scoreData)
+        //firebase.database.enableLogging(true);
+        firebase.database().ref('gameScores')
+            .push(scoreData)
             .then(function(result) {
-                console.log(result);
                 defered.resolve(result);
             },
             function(error) {
-                console.log(error);
             }
         );
-*/
         return defered.promise;
     }
 

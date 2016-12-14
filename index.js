@@ -8,6 +8,21 @@ var FirebaseService = require('./firebaseService.js');
 
 var app = express();
 app.use(parser.json());
+
+var firebaseService = new FirebaseService();
+
+app.get('/api/getScores', function(req, res) {
+    var gameResults = "unknown";
+
+    firebaseService.GetScores().then(function(result) {
+        gameResults = result;
+        res.send(gameResults);
+    }, function(error) {
+        gameResults = "error";
+        res.send(gameResults);
+    });
+});
+
 app.post('/api/setScores', function(req, res) {
     //console.log('Reading data from event\n', util.inspect(event, {depth: 5}));
 
@@ -15,19 +30,13 @@ app.post('/api/setScores', function(req, res) {
     var game = new Game(convertedResult);
     var finalScore = game.score();
 
-    res.send(finalScore);
-/*
-    var firebaseService = new FirebaseService();
     firebaseService.SaveScores(finalScore).then(function(result) {
-        console.log(result);
     },
     function(error) {
-        console.log(error);
     }
   );
 
-    //ctx.succeed(finalScore);
-*/
+  res.send(finalScore);
 });
 
 app.listen(8080, function() {console.log("Server listening");});
